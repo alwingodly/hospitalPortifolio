@@ -9,6 +9,7 @@ import Contact from '../pages/Contact'
 import {Routes , Route} from 'react-router-dom'
 import Blog from '../pages/blog/Blog'
 import BlogDetail from '../pages/blog/BlogDetail'
+import AdminLogin from '../pages/admin/AdminLogin'
 const Routers = () => {
   return (
     <Routes>
@@ -22,7 +23,7 @@ const Routers = () => {
       <Route path='/services' element = {<Services/>}/>
       <Route path='/blog' element = {<Blog/>}/>
       <Route path='/blog/:id' element = {<BlogDetail/>}/>
-
+      <Route path ='/admin' element = {<AdminLogin/>}/>
     </Routes>
   )
 }

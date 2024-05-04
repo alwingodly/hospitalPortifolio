@@ -3,6 +3,8 @@ import logo from "../assets/images/logo.png";
 import { NavLink, Link } from "react-router-dom";
 import userImg from "../assets/images/avatar-icon.png";
 import { BiMenu } from "react-icons/bi";
+import { useDispatch, useSelector } from "react-redux";
+import { adminAuth } from "../reduxStore/slicers/adminSlicer";
 const navLinks = [
   {
     path: "/home",
@@ -29,7 +31,14 @@ const navLinks = [
 const Header = () => {
   const headerRef = useRef(null);
   const menuRef = useRef(null);
-
+  const dispatch = useDispatch()
+  const handleLogout = ()=>{
+    dispatch(adminAuth(false))
+  }
+  const admin = useSelector((state) => {
+    return state.auth.admin;
+  });
+  console.log(admin, "o");
   const handleStickyHeader = () => {
     window.addEventListener("scroll", () => {
       if (
@@ -76,6 +85,18 @@ const Header = () => {
                   </NavLink>
                 </li>
               ))}
+              {admin && (
+                <NavLink
+                  to="/dashboard"
+                  className={(navClass) =>
+                    navClass.isActive
+                      ? "text-primary text-[16px] leading-7 font-[600]"
+                      : "text-secondary text-[16px] leading-7 font-[500] hover:text-primary"
+                  }
+                >
+                  dashboard
+                </NavLink>
+              )}
             </ul>
           </div>
 
@@ -96,6 +117,13 @@ const Header = () => {
                 Login
               </button>
             </Link> */}
+            {admin && (
+              <Link>
+                <button onClick={handleLogout} className="bg-primary py-2 px-6 text-primaryWhite font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
+                  Logout
+                </button>
+              </Link>
+            )}
 
             <span className="md:hidden" onClick={toggleMenu}>
               <BiMenu className="w-6 h-6 cursor-pointer" />
