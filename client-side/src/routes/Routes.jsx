@@ -10,6 +10,7 @@ import {Routes , Route} from 'react-router-dom'
 import Blog from '../pages/blog/Blog'
 import BlogDetail from '../pages/blog/BlogDetail'
 import AdminLogin from '../pages/admin/AdminLogin'
+import AboutPage from '../pages/AboutPage'
 const Routers = () => {
   return (
     <Routes>
@@ -24,6 +25,7 @@ const Routers = () => {
       <Route path='/blog' element = {<Blog/>}/>
       <Route path='/blog/:id' element = {<BlogDetail/>}/>
       <Route path ='/admin' element = {<AdminLogin/>}/>
+      <Route path ='/about' element = {<AboutPage/>}/>
     </Routes>
   )
 }
