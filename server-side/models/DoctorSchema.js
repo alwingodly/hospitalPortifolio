@@ -1,44 +1,20 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
-const DoctorSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  name: { type: String, required: true },
-  phone: { type: Number },
-  photo: { type: String },
-  ticketPrice: { type: Number },
-  role: {
-    type: String,
-  },
-
-  // Fields for doctors only
-  specialization: { type: String },
-  qualifications: {
-    type: Array,
-  },
-
-  experiences: {
-    type: Array,
-  },
-
-  bio: { type: String, maxLength: 50 },
-  about: { type: String },
-  timeSlots: { type: Array },
-  reviews: [{ type: mongoose.Types.ObjectId, ref: "Review" }],
-  averageRating: {
-    type: Number,
-    default: 0,
-  },
-  totalRating: {
-    type: Number,
-    default: 0,
-  },
-  isApproved: {
-    type: String,
-    enum: ["pending", "approved", "cancelled"],
-    default: "pending",
-  },
-  appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
+const doctorSchema = new mongoose.Schema({
+    SL: { type: Number, required: true },
+    NAME: { type: String, required: true },
+    GENDER: { type: String, enum: ['MALE', 'FEMALE', 'OTHER'], required: true },
+    DEPARTMENT: { type: String, required: true },
+    DEPT_ID: { type: Number, required: true },
+    DESIGNATION: { type: String, required: true },
+    QUALIFICATIONS: { type: [String], required: true },
+    EXPERTISE: { type: String, default: '' },
+    ACHIEVEMENTS: { type: [String], default: [] }, // Representing as an array
+    OP_TIMINGS: [{ type: String, required: true }],
+    KNOWN_LANGUAGES: [{ type: String, required: true }],
+    PHOTO_PATH: { type: String }
 });
 
-export default mongoose.model("Doctor", DoctorSchema);
+const Doctor = mongoose.model('Doctor', doctorSchema);
+
+module.exports = Doctor;

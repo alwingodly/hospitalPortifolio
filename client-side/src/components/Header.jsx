@@ -23,6 +23,10 @@ const navLinks = [
     display: "Blog",
   },
   {
+    path: "/about",
+    display: "About",
+  },
+  {
     path: "/contact",
     display: "Contact",
   },
