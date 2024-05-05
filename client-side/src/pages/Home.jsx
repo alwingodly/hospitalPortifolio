@@ -16,12 +16,13 @@ import ServiceList from "../components/services/ServiceList";
 import DoctorsList from "../components/doctors/DoctorsList";
 import FaqList from "../components/faq/FaqList";
 import Testimonial from "../components/testimonial/Testimonial";
+import HomeSlider from "../components/HomeSlider";
 const Home = () => {
   return (
     <>
       <>
         <section>
-          <div className="hero__section 2xl:h-[700px]">
+          {/* <div className="hero__section 2xl:h-[700px]">
             <div className="container">
               <div className="flex flex-col lg:flex-row gap-[90px] items-center justify-between">
                 <div>
@@ -37,7 +38,7 @@ const Home = () => {
                       healthcare professionals, and drive positive outcomes for
                       all stakeholders within the complex healthcare ecosystem.
                     </p>
-                    {/* <button className="btn">Request an Appointment</button> */}
+                    <button className="btn">Request an Appointment</button>
                   </div>
 
                   <div className="mt-[30px] lg:mt-[70px] flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-[30px]">
@@ -77,7 +78,8 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
+          <HomeSlider/>
         </section>
 
         <section>
