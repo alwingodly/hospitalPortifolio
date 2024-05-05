@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Editor from "../../components/Editor";
 import "react-quill/dist/quill.snow.css";
+import { IoMdImages } from "react-icons/io";
 const DUMMY_POSTS = [
   {
     id: "1",
@@ -47,7 +48,6 @@ const Blog = () => {
   async function createNewPost(ev) {
     const data = new FormData();
     data.set("title", title);
-    data.set("summary", summary);
     data.set("content", content);
     data.set("file", files[0]);
     ev.preventDefault();
@@ -60,26 +60,22 @@ const Blog = () => {
 
   const admin = useSelector((state) => state.auth.admin);
   return (
-    <div className="mt-[30px]">
+    <div className="mt-[30px] md:mx-[30px]">
       {admin && (
         <div className="items-center flex justify-center">
-          {form ? (
-            <button className="admin-btn" onClick={toggleForm}>
-              go back
-            </button>
-          ) : (
+          {!form &&
             <button className="admin-btn" onClick={toggleForm}>
               + Add a blog
             </button>
-          )}
+          }
         </div>
       )}
       <section>
         {form ? (
           <>
-           
-            <form onSubmit={createNewPost} className="max-w-md mx-auto">
-            {filePreview && (
+            <form onSubmit={createNewPost} className=" mx-auto flex md:justify-around items-center justify-center flex-col md:flex-row">
+              <div className="md:w-[40%] w-[90%] ">
+              {filePreview ? (
                 <div className=" flex justify-center">
                   <img
                     src={filePreview}
@@ -87,33 +83,39 @@ const Blog = () => {
                     className="max-w-[470px]"
                   />
                 </div>
+              ) : (
+                <div className="h-56 w-full border bg-softwhite border-dotted border-primary flex justify-center items-center">
+                  <label htmlFor="fileUpload">
+                    <IoMdImages className="h-12 w-12" />
+                  </label>
+                </div>
               )}
+              </div>
+              <div className="md:w-[40%] w-[90%]">
               <input
                 type="text"
                 placeholder="Title"
                 value={title}
                 onChange={(ev) => setTitle(ev.target.value)}
-                className="border border-gray-300 rounded-md px-4 py-2 block w-full mt-4 focus:outline-none focus:border-primary"
+                className="border border-gray-300 rounded-md px-4 py-2 block w-full mt-4 focus:outline-none focus:border-primary mb-4"
               />
               <input
                 type="file"
+                accept=".pdf,.doc,.docx,image/*"
                 onChange={(ev) => {
                   setFiles(ev.target.files);
-                  // Update state to store the selected file
                   const selectedFile = ev.target.files[0];
                   if (selectedFile) {
-                    // Create a temporary URL for the selected file
                     const filePreviewUrl = URL.createObjectURL(selectedFile);
-                    // Update state to store the file preview URL
                     setFilePreview(filePreviewUrl);
                   }
                 }}
-                className="block w-full mt-4 focus:outline-none"
+                className="hidden"
+                id="fileUpload"
               />
-             
 
               <Editor value={content} onChange={setContent} className="mt-4" />
-              <div className="flex justify-center mt-4">
+              <div className="flex justify-around mt-4">
                 <button
                   type="submit"
                   style={{ marginTop: "5px" }}
@@ -121,7 +123,12 @@ const Blog = () => {
                 >
                   Create Post
                 </button>
+                <button className="admin-btn" onClick={toggleForm}>
+              go back
+            </button>
               </div>
+              </div>
+              
             </form>
           </>
         ) : (
