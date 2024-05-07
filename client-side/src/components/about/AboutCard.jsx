@@ -3,7 +3,7 @@ import React from 'react'
 const AboutCard = ({about}) => {
     const {name , desc , photo} = about
   return (
-    <div className="p-3 lg:p-5 flex flex-col items-center border shadow-md bg-softWhite">
+    <div className="p-3 lg:p-5 flex flex-col items-center border shadow-md bg-softWhite mb-8">
       <div className='flex items-center justify-center'>
         <img src={photo} className="w-[30%]" alt="" />
       </div>

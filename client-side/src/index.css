@@ -121,6 +121,11 @@ section {
     .text_para {
         font-size: 16px;        
     }
+    .white-heading{
+        font-size: 24px;
+        line-height: 34px;
+        font-weight: 700;
+    }
     .btn {
         /* background-color: #776B5D; */
         background-color: #27374D;
