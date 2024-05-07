@@ -1,7 +1,9 @@
+import { BsHeartPulseFill } from "react-icons/bs";
 export const services = [
   {
     name: "Ambulance Service",
     desc: "World-class care for everyone. Our health System offers unmatched, expert health care. From the lab to the clinic.",
+    // icon: BsHeartPulseFill
   },
   {
     name: "Blood centre",

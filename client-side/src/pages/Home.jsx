@@ -17,6 +17,7 @@ import DoctorsList from "../components/doctors/DoctorsList";
 import FaqList from "../components/faq/FaqList";
 import Testimonial from "../components/testimonial/Testimonial";
 import HomeSlider from "../components/HomeSlider";
+import { HiArrowNarrowRight } from "react-icons/hi";
 const Home = () => {
   return (
     <>
@@ -171,13 +172,16 @@ const Home = () => {
         <section>
           <div className="container">
             <div className="xl:w-[470px] mx-auto">
-              <h2 className="heading text-center">Our medical services</h2>
+              <h2 className="heading text-center">Our Specialities</h2>
               <p className="text_para text-center">
                 World-class care for everyone. Our health system offers
                 unmatched, expert health care
               </p>
             </div>
             <ServiceList />
+            <div className="flex justify-center" >
+              <button className="btn flex">View more <span className="ml-2"><HiArrowNarrowRight size={24}/></span></button>
+            </div>
           </div>
         </section>
 

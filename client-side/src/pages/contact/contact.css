@@ -1,0 +1,124 @@
+:root{
+    --bodyBg:#303841;
+    --formBg:#343F4B;
+    --textColor:#fff;
+    --primaryColor:#0076A3;
+    --paraColor:#5e6c79;
+    --paraColor:#74828f;
+
+}
+
+.contact-section{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 90%;
+    max-width: 1024px;
+    margin: auto;
+}
+
+.sectionHeader{
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 2.0rem;
+    color: var(--primaryColor);
+    margin-bottom: .5em;
+}
+
+
+
+.contactForm{
+    display: grid;
+    gap: 3em;
+}
+
+.contact-form{
+    width: 100%;
+    margin-top: 3em;
+}
+
+
+.input{
+    width: 95%;
+    max-width: 700px;
+    border: none;
+    font-size: .9rem;
+    padding: 1em;
+    outline: none;
+    color: var(--paraColor);
+    border-bottom: 1px solid rgb(220, 219, 219);
+    margin-bottom: 1em;
+
+}
+
+.input:focus{
+    border: 1px solid black;
+}
+
+.input::placeholder{
+    text-transform: capitalize;
+}
+
+.submit{
+    border: none;
+    color: var(--textColor);
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+
+.map-container{
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+.mapBg{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 90%;
+    border-radius: 20px;
+}
+
+.map{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+}
+.pattern-bg {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    left:-300px;
+    bottom:800px;
+    z-index: -1; /* Ensure it's behind other content */
+  }
+.map iframe{
+    width: 100%;
+    height: 100%;
+}
+
+
+.contactIcon{
+    font-size: 2rem;
+    color: var(--primaryColor);
+    width: 70px;
+}
+
+@media screen and (min-width:800px) {
+    .contact-section{
+        max-width: 1100px;
+    }
+    .contactForm{
+        grid-template-columns: 1fr 1fr;
+    }   
+
+    .contactMethod{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
