@@ -2,6 +2,7 @@ import React from "react";
 import startIcon from "../../assets/images/Star.png";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
+import Slider from 'react-slick'
 
 const DoctorCard = ({ doctor }) => {
   const {
@@ -53,6 +54,7 @@ const DoctorCard = ({ doctor }) => {
         </Link>
       </div>
     </div>
+  
   );
 };
 

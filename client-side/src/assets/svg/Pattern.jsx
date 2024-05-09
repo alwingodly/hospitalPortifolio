@@ -10,8 +10,8 @@ const Pattern = (props) => (
   >
     <defs>
       <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="uundulate-grad">
-        <stop stopColor="#DDDDDD" stopOpacity={1} offset="45%" />
-        <stop stopColor="#DDE6ED" stopOpacity={1} offset="100%" />
+        <stop stopColor="#74828f" stopOpacity={1} offset="45%" />
+        <stop stopColor="#5e6c79" stopOpacity={1} offset="100%" />
       </linearGradient>
     </defs>
     <g strokeWidth={1} stroke="url(#uundulate-grad)" fill="none">
