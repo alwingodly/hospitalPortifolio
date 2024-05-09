@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import { doctors } from "../../assets/data/doctors";
 import DoctorCard from "../../components/doctors/DoctorCard";
 import Testimonial from "../../components/testimonial/Testimonial";
+import FileInput from "../../components/cropingModule/FileInput";
+import ImageCropper from "../../components/cropingModule/ImageCropper";
 
 const Doctors = () => {
   const [doctorForm, setDoctorForm] = useState(true);
+  const [image, setImage] = useState("");
+  const [currentPage, setCurrentPage] = useState("choose-img");
+  const [imgAfterCrop, setImgAfterCrop] = useState("");
+
   const [doctorData, setDoctorData] = useState({
     SL: "",
     NAME: "",
@@ -91,18 +97,50 @@ const Doctors = () => {
     }));
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setDoctorData((prevData) => ({
-        ...prevData,
-        PHOTO_PATH: reader.result,
-      }));
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   const reader = new FileReader();
+  //   reader.onloadend = () => {
+  //     setDoctorData((prevData) => ({
+  //       ...prevData,
+  //       PHOTO_PATH: reader.result,
+  //     }));
+  //   };
+  //   reader.readAsDataURL(file);
+  // };
+  const onImageSelected = (selectedTag) => {
+    setImage(selectedTag);
+    setCurrentPage("crop-img");
+  };
+  const onCropDone = (imgCroppedArea) => {
+    const canvasEle = document.createElement("canvas");
+    canvasEle.width = imgCroppedArea.width;
+    canvasEle.height = imgCroppedArea.height;
+    const context = canvasEle.getContext("2d");
+    let imageObj1 = new Image();
+    imageObj1.src = image;
+    imageObj1.onload = function () {
+      context.drawImage(
+        imageObj1,
+        imgCroppedArea.x,
+        imgCroppedArea.y,
+        imgCroppedArea.width,
+        imgCroppedArea.height,
+        0,
+        0,
+        imgCroppedArea.width,
+        imgCroppedArea.height
+      );
+      const dataURL = canvasEle.toDataURL("image/jpeg");
+      setImgAfterCrop(dataURL);
+      setCurrentPage("img-cropped");
     };
-    reader.readAsDataURL(file);
   };
 
+  const onCropCancel = () => {
+    setCurrentPage("choose-img");
+    setImage("");
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     // Send doctorData to your backend or handle it as needed
@@ -120,12 +158,40 @@ const Doctors = () => {
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 Doctor Image:
               </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-              />
+              {currentPage === "choose-img" ? (
+                <FileInput onImageSelected={onImageSelected} />
+              ) : currentPage === "crop-img" ? (
+                <ImageCropper
+                  image={image}
+                  onCropDone={onCropDone}
+                  onCropCancel={onCropCancel}
+                />
+              ) : (
+                <div>
+                  <div className="flex justify-center mb-4">
+                    <img src={imgAfterCrop} className="cropped-img" />
+                  </div>
+                  <div className="flex items-center justify-around">
+                    <button
+                      onClick={() => {
+                        setCurrentPage("crop-img");
+                      }}
+                      className="admin-btn"
+                    >
+                      Crop
+                    </button>
+                    <button
+                      onClick={() => {
+                        setCurrentPage("choose-img");
+                        setImage("");
+                      }}
+                      className="admin-btn"
+                    >
+                      New Image
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2">

@@ -98,6 +98,57 @@ section {
     height: 75px;
 }
 
+/*CROP*/
+
+.btn-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.crop-btn{
+    padding:10px;
+    background: 'blue';
+}
+.crop-container{
+    width:100vw;
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cropped-img{
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+}
+
+.cropper{
+    position: relative;
+    width: 37vw;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.btn-outline{
+    background: #ffffff;
+    color:#189580;
+    border:1px solid #189580
+}
+
+.aspect-ratios{
+    display:flex;
+    align-items: center;
+    padding-left: 1rem;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
 .slick-prev{
     background-color: #9DB2BF;
     color:black !important; 
@@ -124,7 +175,7 @@ section {
 .slick-prev.slick-disabled:before,
 .slick-next.slick-disabled:before
 {
-    opacity: 1;
+    opacity: 0;
     color: #DDE6ED;
 }
 .slick-prev:before,
