@@ -15,7 +15,7 @@ const BlogCard = ({post}) => {
         <p className="text-[18px] leading-[30px] lg:text-[26px] lg:leading-9 text-textColor font-[700]">
           {post.title}
         </p>
-        <div className="text-sm items-center pb-2 text-primary border-b border-solid">
+        <div className="text-sm items-center pb-2 text-teritory border-b border-solid">
           <p >@admin</p>
           {/* <div className="flex space-x-2 text-sm">
             <p>{new Date(post.updatedAt).toString().slice(0, 15)}</p>

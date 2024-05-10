@@ -13,8 +13,8 @@ const ImageCropper = ({ image, onCropDone, onCropCancel }) => {
   };
 
   return (
-    <div>
-      <div className="cropper bg-slate-600">
+    <div className="max-w-4xl mx-auto p-5 bg-white rounded-lg shadow-xl">
+      <div className="relative w-full h-80">
         <Cropper
           image={image}
           aspect={aspectRatio}
@@ -24,42 +24,39 @@ const ImageCropper = ({ image, onCropDone, onCropCancel }) => {
           onZoomChange={setZoom}
           onCropComplete={onCropComplete}
           style={{
-            containerStyle: {
-              width: "100%",
-              height: "80%",
-              backgroundColor: "#fff",
-            },
+            containerStyle: { width: "100%", height: "100%" },
+            mediaStyle: { borderRadius: "8px" },
           }}
         />
       </div>
-        <div className="action-btns justify-center items-center flex">
-          <div className="aspect-ratios" onChange={onAspectRatioChange}>
-            <input type="radio" value={1 / 1} name="ratio" /> 1:1
-            <input type="radio" value={5 / 4} name="ratio" /> 5:4
-            <input type="radio" value={4 / 3} name="ratio" /> 4:3
-            <input type="radio" value={3 / 2} name="ratio" /> 3:2
-            <input type="radio" value={5 / 3} name="ratio" /> 5:3
-            <input type="radio" value={16 / 9} name="ratio" /> 16:9
-            <input type="radio" value={3 / 1} name="ratio" /> 3:1
-          </div>
-        </div>
-        <div className="btn-container mt-4">
-          <button
-            className="bg-primary text-primaryWhite p-2 rounded-md ml-4 text-sm"
-            onClick={onCropCancel}
-          >
-            Cancel
-          </button>
-          <button
-            className="bg-primary text-primaryWhite p-2 rounded-md ml-4 text-sm"
-            onClick={() => {
-              onCropDone(croppedArea);
-            }}
-          >
-            Crop & Apply
-          </button>
+      <div className="flex justify-center space-x-2 my-4">
+        <div className="aspect-ratios" onChange={onAspectRatioChange}>
+          <input type="radio" value={1 / 1} name="ratio" /> 1:1
+          <input type="radio" value={5 / 4} name="ratio" /> 5:4
+          <input type="radio" value={4 / 3} name="ratio" /> 4:3
+          <input type="radio" value={3 / 2} name="ratio" /> 3:2
+          <input type="radio" value={5 / 3} name="ratio" /> 5:3
+          <input type="radio" value={16 / 9} name="ratio" /> 16:9
+          <input type="radio" value={3 / 1} name="ratio" /> 3:1
         </div>
       </div>
+      <div className="btn-container mt-4">
+        <button
+          className="bg-primary text-primaryWhite p-2 rounded-md ml-4 text-sm"
+          onClick={onCropCancel}
+        >
+          Cancel
+        </button>
+        <button
+          className="bg-primary text-primaryWhite p-2 rounded-md ml-4 text-sm"
+          onClick={() => {
+            onCropDone(croppedArea);
+          }}
+        >
+          Crop & Apply
+        </button>
+      </div>
+    </div>
   );
 };
 

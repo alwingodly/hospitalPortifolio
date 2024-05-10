@@ -11,7 +11,7 @@ const AboutCard = ({about}) => {
         {name}
       </h2>
       <div className="flex items-center justify-between">
-        <p className="text-textColor text_para">
+        <p className="text_para">
           {desc}
         </p>
       </div>

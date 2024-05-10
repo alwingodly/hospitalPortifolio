@@ -63,72 +63,80 @@ const Blog = () => {
     <div className="mt-[30px] md:mx-[30px]">
       {admin && (
         <div className="items-center flex justify-center">
-          {!form &&
+          {!form && (
             <button className="admin-btn" onClick={toggleForm}>
               + Add a blog
             </button>
-          }
+          )}
         </div>
       )}
       <section>
         {form ? (
           <>
-            <form onSubmit={createNewPost} className=" mx-auto flex md:justify-around items-center justify-center flex-col md:flex-row">
+            <h2 className="text-center mb-4 sub-heading">Add a new blog</h2>
+
+            <form
+              onSubmit={createNewPost}
+              className=" mx-auto flex md:justify-around items-center justify-center flex-col md:flex-row"
+            >
               <div className="md:w-[40%] w-[90%] ">
-              {filePreview ? (
-                <div className=" flex justify-center">
-                  <img
-                    src={filePreview}
-                    alt="Selected file"
-                    className="max-w-[470px]"
-                  />
-                </div>
-              ) : (
-                <div className="h-56 w-full border bg-softwhite border-dotted border-primary flex justify-center items-center">
-                  <label htmlFor="fileUpload">
-                    <IoMdImages className="h-12 w-12" />
-                  </label>
-                </div>
-              )}
+                {filePreview ? (
+                  <div className=" flex justify-center">
+                    <img
+                      src={filePreview}
+                      alt="Selected file"
+                      className="max-w-[470px]"
+                    />
+                  </div>
+                ) : (
+                  <div className="h-56 w-full border bg-softwhite border-dotted border-primary flex justify-center items-center">
+                    <label htmlFor="fileUpload">
+                      <IoMdImages className="h-12 w-12" />
+                    </label>
+                  </div>
+                )}
               </div>
               <div className="md:w-[40%] w-[90%]">
-              <input
-                type="text"
-                placeholder="Title"
-                value={title}
-                onChange={(ev) => setTitle(ev.target.value)}
-                className="border border-gray-300 rounded-md px-4 py-2 block w-full mt-4 focus:outline-none focus:border-primary mb-4"
-              />
-              <input
-                type="file"
-                accept=".pdf,.doc,.docx,image/*"
-                onChange={(ev) => {
-                  setFiles(ev.target.files);
-                  const selectedFile = ev.target.files[0];
-                  if (selectedFile) {
-                    const filePreviewUrl = URL.createObjectURL(selectedFile);
-                    setFilePreview(filePreviewUrl);
-                  }
-                }}
-                className="hidden"
-                id="fileUpload"
-              />
+                <input
+                  type="text"
+                  placeholder="Title"
+                  value={title}
+                  onChange={(ev) => setTitle(ev.target.value)}
+                  className="border border-gray-300 rounded-md px-4 py-2 block w-full mt-4 focus:outline-none focus:border-primary mb-4"
+                />
+                <input
+                  type="file"
+                  accept=".pdf,.doc,.docx,image/*"
+                  onChange={(ev) => {
+                    setFiles(ev.target.files);
+                    const selectedFile = ev.target.files[0];
+                    if (selectedFile) {
+                      const filePreviewUrl = URL.createObjectURL(selectedFile);
+                      setFilePreview(filePreviewUrl);
+                    }
+                  }}
+                  className="hidden"
+                  id="fileUpload"
+                />
 
-              <Editor value={content} onChange={setContent} className="mt-4" />
-              <div className="flex justify-around mt-4">
-                <button
-                  type="submit"
-                  style={{ marginTop: "5px" }}
-                  className="admin-btn"
-                >
-                  Create Post
-                </button>
-                <button className="admin-btn" onClick={toggleForm}>
-              go back
-            </button>
+                <Editor
+                  value={content}
+                  onChange={setContent}
+                  className="mt-4"
+                />
+                <div className="flex justify-around mt-4">
+                  <button
+                    type="submit"
+                    style={{ marginTop: "5px" }}
+                    className="admin-btn"
+                  >
+                    Create Post
+                  </button>
+                  <button className="admin-btn" onClick={toggleForm}>
+                    go back
+                  </button>
+                </div>
               </div>
-              </div>
-              
             </form>
           </>
         ) : (

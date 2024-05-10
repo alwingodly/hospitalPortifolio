@@ -4,13 +4,14 @@ import DoctorCard from "../../components/doctors/DoctorCard";
 import Testimonial from "../../components/testimonial/Testimonial";
 import FileInput from "../../components/cropingModule/FileInput";
 import ImageCropper from "../../components/cropingModule/ImageCropper";
+import { useSelector } from "react-redux";
 
 const Doctors = () => {
-  const [doctorForm, setDoctorForm] = useState(true);
+  const [doctorForm, setDoctorForm] = useState(false);
   const [image, setImage] = useState("");
   const [currentPage, setCurrentPage] = useState("choose-img");
   const [imgAfterCrop, setImgAfterCrop] = useState("");
-
+  const admin = useSelector((state) => state.auth.admin);
   const [doctorData, setDoctorData] = useState({
     SL: "",
     NAME: "",
@@ -112,6 +113,7 @@ const Doctors = () => {
     setImage(selectedTag);
     setCurrentPage("crop-img");
   };
+
   const onCropDone = (imgCroppedArea) => {
     const canvasEle = document.createElement("canvas");
     canvasEle.width = imgCroppedArea.width;
@@ -134,6 +136,10 @@ const Doctors = () => {
       const dataURL = canvasEle.toDataURL("image/jpeg");
       setImgAfterCrop(dataURL);
       setCurrentPage("img-cropped");
+      setDoctorData((prevData) => ({
+        ...prevData,
+        PHOTO_PATH: dataURL,
+      }));
     };
   };
 
@@ -146,14 +152,30 @@ const Doctors = () => {
     // Send doctorData to your backend or handle it as needed
     console.log(doctorData);
   };
+  const toggleForm = () => {
+    setDoctorForm(!doctorForm);
+  };
   return (
     <>
-      {doctorForm && (
-        <section>
+      {doctorForm && admin && (
+        <section className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
+          
           <form
             onSubmit={handleSubmit}
-            className="max-w-xl mx-auto p-6 bg-white rounded-md shadow-md"
+            className="w-full max-w-2xl bg-white rounded-lg shadow-md p-6"
           >
+            {admin && (
+                <div className="items-center flex justify-start mb-4">
+                  {doctorForm && (
+                    <button className="admin-btn" onClick={toggleForm}>
+                      go back
+                    </button>
+                  )}
+                </div>
+              )}
+            <h2 class="text-2xl font-semibold text-gray-700 mb-5">
+              Doctor's Profile
+            </h2>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 Doctor Image:
@@ -325,7 +347,7 @@ const Doctors = () => {
               ))}
               <button
                 type="button"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-primary admin-btn text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 onClick={handleAddQualification}
               >
                 Add Qualification
@@ -349,7 +371,7 @@ const Doctors = () => {
                   {index > 0 && (
                     <button
                       type="button"
-                      className="ml-2 px-3 py-1 bg-red-500 text-white rounded focus:outline-none focus:shadow-outline"
+                      className="ml-2 px-3 py-1 admin-btn bg-red-500 text-white rounded focus:outline-none focus:shadow-outline"
                       onClick={() => handleRemoveAchievement(index)}
                     >
                       Remove
@@ -359,7 +381,7 @@ const Doctors = () => {
               ))}
               <button
                 type="button"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-primary admin-btn text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 onClick={handleAddAchievement}
               >
                 Add Achievement
@@ -368,12 +390,14 @@ const Doctors = () => {
             <br />
 
             {/* Submit button */}
-            <button
-              type="submit"
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            >
-              Submit
-            </button>
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="bg-primary admin-btn text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </section>
       )}
@@ -381,6 +405,7 @@ const Doctors = () => {
         <div>
           <section>
             <div className="container text-center">
+              
               <h2 className="heading">Find a Doctor</h2>
               <div className="max-w-[570px] mt-[30px]  mx-auto bg-softWhite rounded-md flex items-center justify-between">
                 <input
@@ -389,7 +414,17 @@ const Doctors = () => {
                   className="py-4 pl-4 pr-2 bg-transparent w-full focus:outline-none cursor-pointer placeholder:text-textColor"
                 />
                 <button className="search-btn">Search</button>
+             
               </div>
+              {admin && (
+                <div className="items-center flex justify-center mt-4">
+                  {!doctorForm && (
+                    <button className="admin-btn" onClick={toggleForm}>
+                      + New doctor
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
           </section>
 
