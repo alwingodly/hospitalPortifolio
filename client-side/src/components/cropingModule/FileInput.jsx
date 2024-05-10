@@ -23,7 +23,7 @@ const FileInput = ({ onImageSelected }) => {
         onChange={handleOnchange}
         style={{ display: "none" }}
       />
-      <button className="btn" onClick={onChooseImage}>
+      <button className="admin-btn" onClick={onChooseImage}>
         Choose Image
       </button>
     </div>
