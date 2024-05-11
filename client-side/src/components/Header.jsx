@@ -130,7 +130,7 @@ const Header = () => {
         </div>
       </div>
       <animated.div
-        className="absolute top-[90%] p-4 px-8 w-full md:[700px] md:ml-[0%] overflow-hidden rounded z-10 justify-center flex bg-white"
+        className="absolute top-[90%] px-8 w-full md:[700px] md:ml-[0%] overflow-hidden rounded z-10 justify-center flex bg-white"
         style={menuAnimation}
       >
         {hovering && <Menu />}
