@@ -86,11 +86,10 @@ section {
 }
 
 .sub-heading {
-    font-size: 32px;
-    line-height: 54px;
+    font-size: 24px;
+    line-height: 24px;
     font-weight: 700;
     color: rgba(9, 9, 11, 255);
-    margin-top: 18px;
 }
 
 .white-heading {
@@ -125,6 +124,7 @@ section {
 .header {
     align-items: center;
     height: 75px;
+
 }
 
 

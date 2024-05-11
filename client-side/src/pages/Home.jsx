@@ -3,6 +3,8 @@ import heroImg01 from "../assets/images/hero-img01.png";
 import heroImg02 from "../assets/images/hero-img02.png";
 import heroImg03 from "../assets/images/hero-img03.png";
 import { Link } from "react-router-dom";
+import {motion} from 'framer-motion'
+import { fadeIn } from "../utils/Variants";
 import icon01 from "../assets/images/icon01.png";
 import icon02 from "../assets/images/icon02.png";
 import icon03 from "../assets/images/icon03.png";
@@ -188,7 +190,13 @@ const Home = () => {
         <section>
           <div className="container">
             <div className="flex item-center justify-between flex-col lg:flex-row">
-              <div className="xl:w-[670px]">
+              <motion.div
+              variants={fadeIn("left" , 0.1)}
+              initial = "hidden"
+              whileInView={"show"}
+              viewport={{once: false , amount:0.1}}
+              className="xl:w-[670px]"
+              >
                 <h2 className="heading">
                   Get virtual treatment <br /> anytime
                 </h2>
@@ -208,9 +216,14 @@ const Home = () => {
                 <Link to="/">
                   <button className="btn">Learn More</button>
                 </Link>
-              </div>
+              </motion.div>
 
-              <div className="relative z-10 xl:w-[770px] flex justify-end mt-[50px] lg:mt-0 ">
+              <motion.div
+              variants={fadeIn("right" , 0.1)}
+              initial = "hidden"
+              whileInView={"show"}
+              viewport={{once: false , amount:0.1}}
+              className="relative z-10 xl:w-[770px] flex justify-end mt-[50px] lg:mt-0 ">
                 <img src={featureImg} alt="" />
                 <div className="w-[150px] lg:w-[248px] bg-primaryWhite absolute bottom-[50px] left-0 md:bottom-[100px] md:left-5 z-20 p-2 pb-3 lg:pt-4 lg:px-4 lg:pb-[26px] rounded-[10px]">
                   <div className="flex items-center justify-between">
@@ -237,7 +250,7 @@ const Home = () => {
                     </h4>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>

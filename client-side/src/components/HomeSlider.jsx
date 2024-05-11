@@ -3,6 +3,8 @@ import img1 from "../assets/images/img1.jpg";
 import img2 from "../assets/images/img2.jpg";
 import img3 from "../assets/images/img3.png";
 import img4 from "../assets/images/img4.jpg";
+import { motion } from "framer-motion";
+import { fadeIn } from "../utils/Variants";
 import "../slider.css";
 const HomeSlider = () => {
   const nextDom = useRef(null);
@@ -116,41 +118,70 @@ const HomeSlider = () => {
       </div>
       {/* list thumbnail */}
       <div className="thumbnail" ref={thumbnailBorderDom}>
-        <div className="item hidden md:block">
+        <motion.div
+          variants={fadeIn("left", 0.1)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.1 }}
+          className="item hidden md:block"
+        >
           <img src={img1} alt="Thumbnail 1" />
           <div className="content">
             <div className="title">Name Slider</div>
             <div className="description">Description</div>
           </div>
-        </div>
-        <div className="item hidden md:block">
+        </motion.div>
+        <motion.div 
+         variants={fadeIn("up", 0.1)}
+         initial="hidden"
+         whileInView={"show"}
+         viewport={{ once: false, amount: 0.1 }}
+        className="item hidden md:block">
           <img src={img2} alt="Thumbnail 2" />
           <div className="content">
             <div className="title">Name Slider</div>
             <div className="description">Description</div>
           </div>
-        </div>
-        <div className="item hidden md:block">
+        </motion.div>
+        <motion.div 
+        variants={fadeIn("down", 0.1)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: false, amount: 0.1 }}
+        className="item hidden md:block">
           <img src={img3} alt="Thumbnail 3" />
           <div className="content">
             <div className="title">Name Slider</div>
             <div className="description">Description</div>
           </div>
-        </div>
-        <div className="item hidden md:block">
+        </motion.div>
+        <motion.div
+        variants={fadeIn("right", 0.1)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: false, amount: 0.1 }}
+        className="item hidden md:block">
           <img src={img4} alt="Thumbnail 4" />
           <div className="content">
             <div className="title">Name Slider</div>
             <div className="description">Description</div>
           </div>
-        </div>
+        </motion.div>
       </div>
       {/* next prev */}
       <div className="arrows">
-        <button id="prev" className="text-5xl items-center flex justify-center" ref={prevDom}>
+        <button
+          id="prev"
+          className="text-5xl items-center flex justify-center"
+          ref={prevDom}
+        >
           {"<"}
         </button>
-        <button className="text-5xl items-center flex justify-center" id="next" ref={nextDom}>
+        <button
+          className="text-5xl items-center flex justify-center"
+          id="next"
+          ref={nextDom}
+        >
           {">"}
         </button>
       </div>

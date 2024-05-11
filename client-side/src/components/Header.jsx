@@ -52,12 +52,24 @@ const Header = () => {
   });
 
   return (
+    <>
     <header
-      className="header fixed w-full flex items-center top-0 bg-primaryWhite z-50"
+      className="header fixed w-full flex flex-col items-center top-0 bg-primaryWhite z-50"
       onMouseLeave={() => setHovering(false)}
+      onClick={() => setHovering(false)}
     >
+       {/* <div className="bg-tertiary w-full px-8 py-1 flex justify-between">
+          <p className="text-sm text-secondary ">
+
+          Opening Hours: 24 X 7
+          </p>
+          <p className="text-sm text-textColor ">
+          +91 8714607901
+          </p>
+        </div> */}
       <div className="container">
-        <div className="flex items-center justify-between">
+       
+        <div className="flex pt-1 items-center justify-between">
           <div>
             <img src={logo} alt="logo" className="w-[54px] h-[54px]" />
           </div>
@@ -91,6 +103,9 @@ const Header = () => {
                   }
                   onMouseEnter={() => {
                     setHovering(true);
+                  }}
+                  onClick={()=>{
+                    setHovering(false)
                   }}
                 >
                   Speciality
@@ -130,12 +145,13 @@ const Header = () => {
         </div>
       </div>
       <animated.div
-        className="absolute top-[90%] px-8 w-full md:[700px] md:ml-[0%] overflow-hidden rounded z-10 justify-center flex bg-white"
+        className="absolute top-[90%] px-8 w-full md:[700px] md:ml-[0%] overflow-hidden rounded z-50 justify-center flex bg-white"
         style={menuAnimation}
       >
         {hovering && <Menu />}
       </animated.div>
     </header>
+    </>
   );
 };
 
