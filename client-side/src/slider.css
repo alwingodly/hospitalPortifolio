@@ -75,7 +75,7 @@
     bottom: 40px;
     left: 55%;
     width: max-content;
-    z-index: 100;
+    z-index: 40;
     display: flex;
     gap: 20px;
 }

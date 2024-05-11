@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import logo from "../assets/images/logo.png";
 import { NavLink, Link } from "react-router-dom";
 import userImg from "../assets/images/avatar-icon.png";
 import { BiMenu } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { adminAuth } from "../reduxStore/slicers/adminSlicer";
+import Menu from "./Menu";
+import { useSpring, animated } from "react-spring";
 const navLinks = [
   {
     path: "/home",
@@ -13,10 +15,6 @@ const navLinks = [
   {
     path: "/doctors",
     display: "Find a doctor",
-  },
-  {
-    path: "/services",
-    display: "Specialites",
   },
   {
     path: "/blog",
@@ -33,40 +31,31 @@ const navLinks = [
 ];
 
 const Header = () => {
-  const headerRef = useRef(null);
   const menuRef = useRef(null);
-  const dispatch = useDispatch()
-  const handleLogout = ()=>{
-    dispatch(adminAuth(false))
-  }
+  const dispatch = useDispatch();
+  const [hovering, setHovering] = useState(false);
+
+  const handleLogout = () => {
+    dispatch(adminAuth(false));
+  };
   const admin = useSelector((state) => {
     return state.auth.admin;
   });
-  console.log(admin, "o");
-  const handleStickyHeader = () => {
-    window.addEventListener("scroll", () => {
-      if (
-        document.body.scrollTop > 80 ||
-        document.documentElement.scrollTop > 80
-      ) {
-        headerRef.current.classList.add("sticky__header");
-      } else {
-        headerRef.current.classList.remove("sticky__header");
-      }
-    });
-  };
-
-  useEffect(() => {
-    handleStickyHeader();
-    return () => window.removeEventListener("scroll", handleStickyHeader);
-  }, []);
 
   const toggleMenu = () => {
-    console.log("l--");
     menuRef.current.classList.toggle("show__menu");
   };
+
+  const menuAnimation = useSpring({
+    opacity: hovering ? 1 : 0,
+    transform: hovering ? "scale(1)" : "scale(1)",
+  });
+
   return (
-    <header className="header flex item-center bg-softWhite" ref={headerRef}>
+    <header
+      className="header fixed w-full flex items-center top-0 bg-primaryWhite z-50"
+      onMouseLeave={() => setHovering(false)}
+    >
       <div className="container">
         <div className="flex items-center justify-between">
           <div>
@@ -84,11 +73,29 @@ const Header = () => {
                         ? "text-primary text-[16px] leading-7 font-[600]"
                         : "text-secondary text-[16px] leading-7 font-[500] hover:text-primary"
                     }
+                    onMouseEnter={() => {
+                      setHovering(false);
+                    }}
                   >
                     {link.display}
                   </NavLink>
                 </li>
               ))}
+              <li>
+                <NavLink
+                  to="/services"
+                  className={(navClass) =>
+                    navClass.isActive
+                      ? "text-primary text-[16px] leading-7 font-[600]"
+                      : "text-secondary text-[16px] leading-7 font-[500] hover:text-primary"
+                  }
+                  onMouseEnter={() => {
+                    setHovering(true);
+                  }}
+                >
+                  Speciality
+                </NavLink>
+              </li>
               {admin && (
                 <NavLink
                   to="/dashboard"
@@ -105,25 +112,12 @@ const Header = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            {/* <div className="">
-              <Link to="/">
-                <figure className="w-[35px] h-[35px] rounded-full cursor-pointer">
-                  <img
-                    src={userImg}
-                    className="w-full rounded-full"
-                    alt="user"
-                  />
-                </figure>
-              </Link>
-            </div>
-            <Link to="/login">
-              <button className="bg-primary py-2 px-6 text-primaryWhite font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
-                Login
-              </button>
-            </Link> */}
             {admin && (
               <Link>
-                <button onClick={handleLogout} className="bg-primary py-2 px-6 text-primaryWhite font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
+                <button
+                  onClick={handleLogout}
+                  className="bg-primary py-2 px-6 text-primaryWhite font-[600] h-[44px] flex items-center justify-center rounded-[50px]"
+                >
                   Logout
                 </button>
               </Link>
@@ -135,6 +129,12 @@ const Header = () => {
           </div>
         </div>
       </div>
+      <animated.div
+        className="absolute top-[90%] p-4 px-8 w-full md:[700px] md:ml-[0%] overflow-hidden rounded z-10 justify-center flex bg-white"
+        style={menuAnimation}
+      >
+        {hovering && <Menu />}
+      </animated.div>
     </header>
   );
 };
