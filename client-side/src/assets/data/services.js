@@ -1,7 +1,7 @@
 import Cardiology from '../departmentIcons/cardiology.png'
 import Neurology from '../departmentIcons/neurology.png'
 import Orthopedics from '../departmentIcons/orthopedics.png'
-import Pediatrics from '../departmentIcons/orthopedics.png'
+import Pediatrics from '../departmentIcons/pediatrics.png'
 import Maternity from '../departmentIcons/maternity.png'
 import Anesthesia from '../departmentIcons/anesthesia.png'
 import Ayurveda from '../departmentIcons/ayurveda.png'
@@ -44,7 +44,7 @@ export const departments = [
   },
   {
     name: "Orthopedics",
-    desc: "Focuses on the musculoskeletal system, treating injuries and diseases affecting bones, muscles, joints, ligaments, and tendons.",
+    desc: " Focuses on bones, muscles, and joints, treating injuries and conditions",
     Icon: Orthopedics,
   },
   {

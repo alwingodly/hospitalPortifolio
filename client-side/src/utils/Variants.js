@@ -19,3 +19,21 @@ export const fadeIn = (direction, delay) => {
         },
     };
 };
+
+export const rotate = (angle, duration, delay) => {
+    return {
+        hidden: {
+            rotate: angle,
+        },
+        show: {
+            rotate: 0,
+            transition: {
+                type: 'tween',
+                duration: duration,
+                delay: delay,
+                ease: [0.25, 0.25, 0.25, 0.75],
+            },
+        },
+    };
+};
+

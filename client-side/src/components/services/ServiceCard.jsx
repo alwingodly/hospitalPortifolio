@@ -11,7 +11,7 @@ const ServiceCard = ({ name, desc, Icon, index }) => {
       <h2 className="text-[20px] leading-9 text-center text-textColor font-[700] justify-center flex">
         {name}
       </h2>
-      {desc && <p className="text-[16px] leading-7 text-center font-[400] h-[120px] text-textColor mt-4 overflow-hidden">
+      {desc && <p className="text-[16px] leading-7 text-center font-[400] h-[100px] text-textColor mt-4 overflow-hidden">
         {desc}
       </p>}
       <div className="flex items-center justify-between mt-2">
