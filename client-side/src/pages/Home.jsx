@@ -20,6 +20,7 @@ import FaqList from "../components/faq/FaqList";
 import Testimonial from "../components/testimonial/Testimonial";
 import HomeSlider from "../components/HomeSlider";
 import { HiArrowNarrowRight } from "react-icons/hi";
+import HomeGallary from "./gallary/HomeGallary";
 const Home = () => {
   return (
     <>
@@ -168,7 +169,9 @@ const Home = () => {
               </div>
             </div>
           </div>
+          {/* <HomeGallary/> */}
         </section>
+
         <About />
 
         <section>

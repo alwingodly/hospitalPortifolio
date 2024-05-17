@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-const FaqItem = ({ item }) => {
+import {motion} from "framer-motion"
+import { fadeIn } from "../../utils/Variants";
+const FaqItem = ({ item , index }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <div className="p-2 lg:p-3 rounded-[12px] border border-solid border-tertiary mb-5 cursor-pointer">
+    <motion.div 
+    variants={fadeIn("right", 0,3)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: false, amount: 0.1 }}
+    className="p-2 lg:p-3 rounded-[12px] border border-solid border-tertiary mb-5 cursor-pointer">
       <div
         className="flex items-center justify-between gap-5"
         onClick={toggleAccordion}
@@ -29,7 +36,7 @@ const FaqItem = ({ item }) => {
           </p>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

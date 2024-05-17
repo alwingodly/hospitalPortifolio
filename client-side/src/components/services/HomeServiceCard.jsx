@@ -6,7 +6,7 @@ import { fadeIn, rotate } from "../../utils/Variants";
 import whitebody from "../../assets/images/null.png";
 const HomeServiceCard = ({ name, desc, Icon, index }) => {
   return (
-    <div className="relative pt-6  mt-8 rounded-tl-3xl rounded-tr-3xl hover:border-white border-2  border-primary flex flex-col justify-center items-center">
+    <div className="relative pt-6  mt-16 md:mt-8 rounded-tl-3xl rounded-tr-3xl hover:border-white border-2  border-primary flex flex-col justify-center items-center">
       <div className=" absolute flex justify-center p-8 w-30 rounded-full top-[-65px] bg-white z-0">
         <img src={whitebody} className="h-12" />
       </div>

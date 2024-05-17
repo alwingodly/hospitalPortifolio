@@ -14,11 +14,15 @@ const navLinks = [
   },
   {
     path: "/doctors",
-    display: "Find a doctor",
+    display: "Doctors",
+  },
+  {
+    path: "/gallary",
+    display: "Gallary",
   },
   {
     path: "/blog",
-    display: "Blog",
+    display: "Events",
   },
   {
     path: "/about",

@@ -11,6 +11,7 @@ import BlogDetail from '../pages/blog/BlogDetail'
 import AdminLogin from '../pages/admin/AdminLogin'
 import AboutPage from '../pages/AboutPage'
 import Contact from '../pages/contact/Contact'
+import Gallary from '../pages/gallary/Gallary'
 const Routers = () => {
   return (
     <Routes>
@@ -26,6 +27,7 @@ const Routers = () => {
       <Route path='/blog/:id' element = {<BlogDetail/>}/>
       <Route path ='/admin' element = {<AdminLogin/>}/>
       <Route path ='/about' element = {<AboutPage/>}/>
+      <Route path ='/gallary' element = {<Gallary/>}/>
     </Routes>
   )
 }

@@ -60,9 +60,9 @@ const Blog = () => {
 
   const admin = useSelector((state) => state.auth.admin);
   return (
-    <div className="mt-[30px] md:mx-[30px]">
+    <div className="mt-4 mx-4 md:mx-6 lg:mx-32">
       {admin && (
-        <div className="items-center flex justify-center">
+        <div className="flex justify-center">
           {!form && (
             <button className="admin-btn" onClick={toggleForm}>
               + Add a blog
@@ -74,19 +74,11 @@ const Blog = () => {
         {form ? (
           <>
             <h2 className="text-center mb-4 sub-heading">Add a new blog</h2>
-
-            <form
-              onSubmit={createNewPost}
-              className=" mx-auto flex md:justify-around items-center justify-center flex-col md:flex-row"
-            >
-              <div className="md:w-[40%] w-[90%] ">
+            <form onSubmit={createNewPost} className="mx-auto md:flex md:justify-around md:items-center md:justify-center">
+              <div className="md:w-1/2 w-full md:px-4 py-6">
                 {filePreview ? (
-                  <div className=" flex justify-center">
-                    <img
-                      src={filePreview}
-                      alt="Selected file"
-                      className="max-w-[470px]"
-                    />
+                  <div className="flex justify-center">
+                    <img src={filePreview} alt="Selected file" className="max-w-full md:max-w-[470px]"/>
                   </div>
                 ) : (
                   <div className="h-56 w-full border bg-softwhite border-dotted border-primary flex justify-center items-center">
@@ -96,7 +88,7 @@ const Blog = () => {
                   </div>
                 )}
               </div>
-              <div className="md:w-[40%] w-[90%]">
+              <div className="md:w-1/2 w-full md:px-4">
                 <input
                   type="text"
                   placeholder="Title"
@@ -118,43 +110,24 @@ const Blog = () => {
                   className="hidden"
                   id="fileUpload"
                 />
-
-                <Editor
-                  value={content}
-                  onChange={setContent}
-                  className="mt-4"
-                />
+                <Editor value={content} onChange={setContent} className="mt-4"/>
                 <div className="flex justify-around mt-4">
-                  <button
-                    type="submit"
-                    style={{ marginTop: "5px" }}
-                    className="admin-btn"
-                  >
-                    Create Post
-                  </button>
-                  <button className="admin-btn" onClick={toggleForm}>
-                    go back
-                  </button>
+                  <button type="submit" className="admin-btn mt-2 w-full md:w-auto md:mt-0">Create Post</button>
+                  <button className="admin-btn" onClick={toggleForm}>Go Back</button>
                 </div>
               </div>
             </form>
           </>
         ) : (
-          <div className="px-8 md:px-[200px] min-h-[80vh]">
+          <div className="px-4 md:px-20 lg:px-30 min-h-[80vh]">
             {posts ? (
               posts.map((post) => (
-                <>
-                  {/* <Link to={user?`/posts/post/${post._id}`:"/login"}>
-                   */}
-                  <Link to={`/blog/${post.id}`}>
-                    <BlogCard key={post.id} post={post} />
-                  </Link>
-                </>
+                <Link to={`/blog/${post.id}`} key={post.id}>
+                  <BlogCard post={post} />
+                </Link>
               ))
             ) : (
-              <h3 className="text-center font-bold mt-16">
-                No posts available
-              </h3>
+              <h3 className="text-center font-bold mt-16">No posts available</h3>
             )}
           </div>
         )}

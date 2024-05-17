@@ -58,7 +58,7 @@ const Contact = () => {
           </button>
         </form>
 
-        <div className="flex flex-col items-center md:items-start md:my-8">
+        <div className="flex flex-col items-start md:my-8">
           <div>
             <div className="method p-2 flex mt-2 ">
               <div className="mx-4 flex items-center">
