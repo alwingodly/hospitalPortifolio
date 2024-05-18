@@ -3,8 +3,13 @@
 @tailwind utilities;
 
 /* Base styles */
+
+body{
+    background-color:#FFFFFF;
+}
 section {
     padding-top: 95px;
+    background-color: #FFFFFF;
 }
 
 /* Component styles */
@@ -15,6 +20,7 @@ section {
     padding-right: 8rem;
     margin-left: auto;
     margin-right: auto;
+    background-color: #FFFFFF;
 }
 
 .carousel .list .item .about-content {
@@ -32,7 +38,7 @@ section {
 
 .btn {
     /* background-color: #776B5D; */
-    background-color: #DA0037;
+    background-color: #E11D48;
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 35px;
@@ -45,7 +51,7 @@ section {
 
 .search-btn {
     /* background-color: #776B5D; */
-    background-color: #DA0037;
+    background-color: #E11D48;
     padding-top: 16px;
     padding-bottom: 16px;
     padding-left: 35px;
@@ -63,12 +69,12 @@ section {
     padding-bottom: 4px;
     padding-left: 20px;
     padding-right: 20px;
-    color: #DA0037;
+    color: #E11D48;
     font-weight: 5s00;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border: 1.5px solid;
-    border-color: #DA0037;
+    border-color: #E11D48;
     border-radius: 50px;
 }
 
@@ -118,7 +124,7 @@ section {
 .menu-text_para:hover {
     font-size: 14px;
     font-weight: 500;
-    color: #DA0037;
+    color: #E11D48;
 }
 
 .header {
@@ -139,7 +145,7 @@ section {
 
 .crop-btn {
     padding: 10px;
-    background: '#DA0037';
+    background: '#E11D48';
 }
 
 .crop-container {
@@ -260,7 +266,7 @@ section {
 
     .btn {
         /* background-color: #776B5D; */
-        background-color: #DA0037;
+        background-color: #E11D48;
         padding-top: 10px;
         padding-bottom: 10px;
         padding-left: 25px;

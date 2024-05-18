@@ -13,7 +13,7 @@ const AdminLogin = () => {
     }
   return (
     <div className="flex justify-center items-start h-screen bg-softWhite">
-        <div className="w-96 p-6 shadow-lg bg-white rounded-md mt-[100px]">
+        <div className="w-96 p-6 shadow-lg bg-primaryWhite rounded-md mt-[100px]">
             <h1 className="text-3xl block text-center font-semibold"><i className="fa-solid fa-user"></i> Login</h1>
             <hr className="mt-3"/>
             <div className="mt-3">

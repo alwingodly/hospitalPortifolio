@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import image1 from "./images/b1.jpg";
 import image13 from "./images/b2.jpg";
 import image5 from "./images/b3.jpg";
@@ -40,15 +40,17 @@ const Gallery = () => {
   const openImage = (index) => setCurrentIndex(index);
   const prevImage = () => setCurrentIndex((prev) => (prev > 0 ? prev - 1 : prev));
   const nextImage = () => setCurrentIndex((prev) => (prev < images.length - 1 ? prev + 1 : prev));
-
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
   return (
     <section>
       {currentIndex !== null && (
         <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-85 p-4 z-50">
-          <button onClick={closeImage} className="absolute top-5 right-5 text-white text-2xl">✕</button>
-          <button onClick={prevImage} className={`absolute left-5 text-white text-2xl ${currentIndex === 0 ? 'hidden' : ''}`}>←</button>
+          <button onClick={closeImage} className="absolute top-5 right-5 text-primaryWhite text-2xl">✕</button>
+          <button onClick={prevImage} className={`absolute left-5 text-primaryWhite text-2xl ${currentIndex === 0 ? 'hidden' : ''}`}>←</button>
           <img src={images[currentIndex]} className="max-h-[80vh] max-w-[90vw]" alt="Gallery item"/>
-          <button onClick={nextImage} className={`absolute right-5 text-white text-2xl ${currentIndex === images.length - 1 ? 'hidden' : ''}`}>→</button>
+          <button onClick={nextImage} className={`absolute right-5 text-primaryWhite text-2xl ${currentIndex === images.length - 1 ? 'hidden' : ''}`}>→</button>
         </div>
       )}
       <div className="px-4 md:px-36">

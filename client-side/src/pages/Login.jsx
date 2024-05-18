@@ -41,7 +41,7 @@ const Login = () => {
           </div>
 
           <div className="mt-7">
-           <button type="submit" className="w-full bg-primary text-white text-[18px] leading-[30px] rounded-lg px-4 py-2">
+           <button type="submit" className="w-full bg-primary text-primaryWhite text-[18px] leading-[30px] rounded-lg px-4 py-2">
             Login
            </button>
           </div>

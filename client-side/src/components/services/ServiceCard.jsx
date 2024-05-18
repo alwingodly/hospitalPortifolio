@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 
 const ServiceCard = ({ name, desc, Icon, index }) => {
   return (
-    <div className="py-6 px-3 lg:px-5 mt-8 hover:bg-softWhite rounded-lg hover:border-dim border border-white">
+    <div className="py-6 px-3 lg:px-5 mt-8 hover:border rounded-lg hover:border-dim border border-primaryWhite  block transition-transform duration-300 hover:scale-105 cursor-pointer">
       <div className="flex justify-center p-8">
         <img src={Icon} className="h-16"/>
       </div>
       <h2 className="text-[20px] leading-9 text-center text-textColor font-[700] justify-center flex">
         {name}
       </h2>
-      {desc && <p className="text-[16px] leading-7 text-center font-[400] h-[100px] text-textColor mt-4 overflow-hidden">
+      {desc && <p className="text-[16px] leading-7 text-center font-[400] h-[100px] text-secondary mt-4 overflow-hidden">
         {desc}
       </p>}
       <div className="flex items-center justify-between mt-2">
@@ -24,7 +24,7 @@ const ServiceCard = ({ name, desc, Icon, index }) => {
           </Link>
         </div>
 
-        <span className="w-[44px] h-[44px] flex items-center justify-center text-[18px] leading-[30px] font-[600] bg-primary text-white">
+        <span className="w-[44px] h-[44px] flex items-center justify-center text-[18px] leading-[30px] font-[600] bg-primary text-primaryWhite">
           {index + 1}
         </span>
       </div>

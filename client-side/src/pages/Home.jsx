@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import heroImg01 from "../assets/images/hero-img01.png";
 import heroImg02 from "../assets/images/hero-img02.png";
 import heroImg03 from "../assets/images/hero-img03.png";
@@ -22,9 +22,11 @@ import HomeSlider from "../components/HomeSlider";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import HomeGallary from "./gallary/HomeGallary";
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
   return (
-    <>
-      <>
+    <div>
         <section>
           {/* <div className="hero__section 2xl:h-[700px]">
             <div className="container">
@@ -299,8 +301,7 @@ const Home = () => {
             <Testimonial/>
           </div>
         </section>
-      </>
-    </>
+      </div>
   );
 };
 

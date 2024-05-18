@@ -29,7 +29,7 @@ const DoctorCard = ({ doctor }) => {
         {name}
       </h2>
       <div className="mt-2 lg:mt-4 flex items-center justify-between">
-        <span className="text-primary bg-softWhite py-1 px-2 lg:py-2 lg:px-6 text-[12px] leading-4 lg:text-[16px] lg:leading-7 font-semibold rounded">
+        <span className="text-primary bg-secondaryWhite py-1 px-2 lg:py-2 lg:px-6 text-[12px] leading-4 lg:text-[16px] lg:leading-7 font-semibold rounded">
           {specialization}
         </span>
 

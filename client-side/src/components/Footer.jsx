@@ -11,19 +11,19 @@ import {
 const socialLinks = [
   {
     path: "https://www.youtube.com",
-    icon: <AiFillYoutube className="group-hover:text-white w-4 h-5" />,
+    icon: <AiFillYoutube className="group-hover:text-primaryWhite w-4 h-5" />,
   },
   {
     path: "https://www.github.com",
-    icon: <AiFillGithub className="group-hover:text-white w-4 h-5" />,
+    icon: <AiFillGithub className="group-hover:text-primaryWhite w-4 h-5" />,
   },
   {
     path: "https://www.instagram.com",
-    icon: <AiOutlineInstagram className="group-hover:text-white w-4 h-5" />,
+    icon: <AiOutlineInstagram className="group-hover:text-primaryWhite w-4 h-5" />,
   },
   {
     path: "https://www.linkedin.com",
-    icon: <RiLinkedinFill className="group-hover:text-white w-4 h-5" />,
+    icon: <RiLinkedinFill className="group-hover:text-primaryWhite w-4 h-5" />,
   },
 ];
 
@@ -76,7 +76,7 @@ const quickLinks03 = [
 const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <footer className="pb-16 pt-10 border-t mt-4">
+    <footer className="pb-16 pt-10 border-t mt-4 bg-primaryWhite">
       <div className="container">
         <div className="flex justify-between flex-col md:flex-row flex-wrap gap-[30px]">
           <div>

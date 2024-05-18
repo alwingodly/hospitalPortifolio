@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
 import thumbnail1 from "../../assets/images/blog1.jpg";
 import thumbnail2 from "../../assets/images/blog2.jpg";
@@ -9,32 +9,32 @@ import { useSelector } from "react-redux";
 import Editor from "../../components/Editor";
 import "react-quill/dist/quill.snow.css";
 import { IoMdImages } from "react-icons/io";
-import DOMPurify from 'dompurify';
+import DOMPurify from "dompurify";
 
 const DUMMY_POSTS = [
   {
     id: "1",
     thumbnail: thumbnail1,
-    title: "This is the title of the very first post in this blog",
-    desc: "Doctors are highly trained medical professionals...",
+    title: "This is the tittle of the very first post in this blog",
+    desc: "Doctors are highly trained medical professionals who diagnose and treat illnesses, injuries, and health conditions. They undergo extensive education and training, often specializing in specific areas of medicine. Doctors provide patient care in various settings, collaborating with other healthcare professionals to ensure comprehensive treatment. They adhere to strict ethical standards and engage in continuing education to stay updated with medical advancements. Empathy, compassion, and effective communication are essential qualities for doctors, who play a vital role in promoting and maintaining the health and well-being of individuals and communities.",
   },
   {
     id: "2",
     thumbnail: thumbnail2,
-    title: "This is the title of the very first post in this blog",
-    desc: "Doctors are highly trained medical professionals...",
+    title: "This is the tittle of the very first post in this blog",
+    desc: "Doctors are highly trained medical professionals who diagnose and treat illnesses, injuries, and health conditions. They undergo extensive education and training, often specializing in specific areas of medicine. Doctors provide patient care in various settings, collaborating with other healthcare professionals to ensure comprehensive treatment. They adhere to strict ethical standards and engage in continuing education to stay updated with medical advancements. Empathy, compassion, and effective communication are essential qualities for doctors, who play a vital role in promoting and maintaining the health and well-being of individuals and communities.",
   },
   {
     id: "3",
     thumbnail: thumbnail3,
-    title: "This is the title of the very first post in this blog",
-    desc: "Doctors are highly trained medical professionals...",
+    title: "This is the tittle of the very first post in this blog",
+    desc: "Doctors are highly trained medical professionals who diagnose and treat illnesses, injuries, and health conditions. They undergo extensive education and training, often specializing in specific areas of medicine. Doctors provide patient care in various settings, collaborating with other healthcare professionals to ensure comprehensive treatment. They adhere to strict ethical standards and engage in continuing education to stay updated with medical advancements. Empathy, compassion, and effective communication are essential qualities for doctors, who play a vital role in promoting and maintaining the health and well-being of individuals and communities.",
   },
   {
     id: "4",
     thumbnail: thumbnail4,
-    title: "This is the title of the very first post in this blog",
-    desc: "Doctors are highly trained medical professionals...",
+    title: "This is the tittle of the very first post in this blog",
+    desc: "Doctors are highly trained medical professionals who diagnose and treat illnesses, injuries, and health conditions. They undergo extensive education and training, often specializing in specific areas of medicine. Doctors provide patient care in various settings, collaborating with other healthcare professionals to ensure comprehensive treatment. They adhere to strict ethical standards and engage in continuing education to stay updated with medical advancements. Empathy, compassion, and effective communication are essential qualities for doctors, who play a vital role in promoting and maintaining the health and well-being of individuals and communities.",
   },
 ];
 
@@ -45,6 +45,11 @@ const Blog = () => {
   const [content, setContent] = useState("");
   const [files, setFiles] = useState(null);
   const [filePreview, setFilePreview] = useState("");
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   const toggleForm = () => {
     setForm(!form);
   };
@@ -78,7 +83,7 @@ const Blog = () => {
 
   const admin = useSelector((state) => state.auth.admin);
   return (
-    <div className="mt-4 mx-4 md:mx-6 lg:mx-32">
+    <section className="mt-4 mx-4 md:mx-6 lg:mx-32">
       {admin && (
         <div className="flex justify-center">
           {!form && (
@@ -92,11 +97,18 @@ const Blog = () => {
         {form ? (
           <>
             <h2 className="text-center mb-4 sub-heading">Add a new blog</h2>
-            <form onSubmit={createNewPost} className="mx-auto md:flex md:justify-around md:items-center">
+            <form
+              onSubmit={createNewPost}
+              className="mx-auto md:flex md:justify-around md:items-center"
+            >
               <div className="md:w-1/2 w-full md:px-4 py-6">
                 {filePreview ? (
                   <div className="flex justify-center">
-                    <img src={filePreview} alt="Selected file" className="max-w-full md:max-w-[470px]" />
+                    <img
+                      src={filePreview}
+                      alt="Selected file"
+                      className="max-w-full md:max-w-[470px]"
+                    />
                   </div>
                 ) : (
                   <div className="h-56 w-full border bg-softwhite border-dotted border-primary flex justify-center items-center">
@@ -128,10 +140,25 @@ const Blog = () => {
                   className="hidden"
                   id="fileUpload"
                 />
-                <Editor value={content} onChange={setContent} className="mt-4" />
+                <Editor
+                  value={content}
+                  onChange={setContent}
+                  className="mt-4"
+                />
                 <div className="flex justify-around mt-4">
-                  <button type="submit" className="admin-btn mt-2 w-full md:w-auto md:mt-0">Create Post</button>
-                  <button type="button" className="admin-btn" onClick={toggleForm}>Go Back</button>
+                  <button
+                    type="submit"
+                    className="admin-btn mt-2 w-full md:w-auto md:mt-0"
+                  >
+                    Create Post
+                  </button>
+                  <button
+                    type="button"
+                    className="admin-btn"
+                    onClick={toggleForm}
+                  >
+                    Go Back
+                  </button>
                 </div>
               </div>
             </form>
@@ -145,12 +172,14 @@ const Blog = () => {
                 </Link>
               ))
             ) : (
-              <h3 className="text-center font-bold mt-16">No posts available</h3>
+              <h3 className="text-center font-bold mt-16">
+                No posts available
+              </h3>
             )}
           </div>
         )}
       </section>
-    </div>
+    </section>
   );
 };
 

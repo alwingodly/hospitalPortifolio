@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./contact.css";
 import { ImLocation } from "react-icons/im";
 import { BsFillTelephoneForwardFill } from "react-icons/bs";
 import { SiGmail } from "react-icons/si";
 import Pattern from "../../assets/svg/Pattern";
 const Contact = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
   const onSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);

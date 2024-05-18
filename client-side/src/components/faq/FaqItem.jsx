@@ -13,7 +13,7 @@ const FaqItem = ({ item , index }) => {
         initial="hidden"
         whileInView={"show"}
         viewport={{ once: false, amount: 0.1 }}
-    className="p-2 lg:p-3 rounded-[12px] border border-solid border-tertiary mb-5 cursor-pointer">
+    className="p-2 lg:p-3 rounded-[12px] border border-solid border-border mb-5 cursor-pointer">
       <div
         className="flex items-center justify-between gap-5"
         onClick={toggleAccordion}
@@ -31,7 +31,7 @@ const FaqItem = ({ item , index }) => {
       </div>
       {isOpen && (
         <div className="mt-4">
-          <p className="text-[14px] leading-5 lg:text-[16px] lg:leading-7 font-[400] text-textColor">
+          <p className="text-[14px] leading-5 lg:text-[16px] lg:leading-7 font-[400] text-secondary">
             {item.content}
           </p>
         </div>

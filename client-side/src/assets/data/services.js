@@ -173,7 +173,7 @@ export const departments = [
     Icon: Physiotherapy,
   },
   {
-    name: "Psychiatry & Behavioral Medicine",
+    name: "Behavioral Medicine",
     desc: "Diagnoses and treats mental health disorders and behavioral issues.",
     Icon: Psychiatry,
   },

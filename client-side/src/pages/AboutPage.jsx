@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import img1 from "../assets/images/img1.jpg";
 import LeadersCard from "../components/about/LeadersCard";
 import { leaders } from "../assets/data/leaders";
 import { about } from "../assets/data/about-mvv";
 import AboutCard from "../components/about/AboutCard";
 const AboutPage = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
   return (
     <>
       <section>
