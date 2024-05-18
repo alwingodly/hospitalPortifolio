@@ -6,8 +6,8 @@ import { fadeIn, rotate } from "../../utils/Variants";
 import whitebody from "../../assets/images/null.png";
 const HomeServiceCard = ({ name, desc, Icon, index }) => {
   return (
-    <div className="relative pt-6  mt-8 rounded-tl-3xl rounded-tr-3xl hover:border-white border-2  border-primary flex flex-col justify-center items-center">
-      <div className=" absolute flex justify-center p-8 w-30 rounded-full top-[-65px] bg-white z-0">
+    <div className="relative pt-6  mt-16 md:mt-8 rounded-tl-3xl rounded-tr-3xl hover:border-primaryWhite border-2  border-primary flex flex-col justify-center items-center">
+      <div className=" absolute flex justify-center p-8 w-30 rounded-full top-[-65px] bg-primaryWhite z-0">
         <img src={whitebody} className="h-12" />
       </div>
       <motion.div
@@ -15,7 +15,7 @@ const HomeServiceCard = ({ name, desc, Icon, index }) => {
         initial="hidden"
         whileInView={"show"}
         viewport={{ once: false, amount: 0.1 }}
-        className=" absolute flex justify-center p-8 w-30 rounded-full border-primary border-2 top-[-65px] bg-white z-1"
+        className=" absolute flex justify-center p-8 w-30 rounded-full border-primary border-2 top-[-65px] bg-primaryWhite z-1"
       >
         <img src={Icon} className="h-12" />
       </motion.div>
@@ -38,7 +38,7 @@ const HomeServiceCard = ({ name, desc, Icon, index }) => {
           </Link>
         </div>
 
-        <span className="w-[44px] pt-2 pl-2 rounded-br-md rounded-tl-full h-[44px] flex items-center justify-center text-[18px] leading-[30px] font-[600] bg-primary text-white">
+        <span className="w-[44px] pt-2 pl-2 rounded-br-md rounded-tl-full h-[44px] flex items-center justify-center text-[18px] leading-[30px] font-[600] bg-primary text-primaryWhite">
           {index + 1}
         </span>
       </div>

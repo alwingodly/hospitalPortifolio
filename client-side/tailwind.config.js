@@ -15,15 +15,19 @@ module.exports = {
         // secondary: '#526D82',
         // tertiary: '#9DB2BF',
         // light: '#DDE6ED',
-        primary: '#DA0037',
-        secondary: '#444444',
+        primary: '#E11D48',
+        secondary: '#71717A',
         tertiary: '#DBE2EF',
         light: '#EDEDED',
         dim:'#DDDDDD',
-        primaryWhite: 'rgba(255,255,255,255)',
+        // primaryWhite: 'rgba(255,255,255,255)',
         softWhite: '#f4f4f5',
+        border:'rgb(228, 228, 231)',
         // textColor: 'rgba(9,9,11,255)',
-        textColor :'#171717'
+        textColor :'#09090B',
+        primaryWhite:'#FFFFFF',
+        secondaryWhite:'#F4F4F5'
+
       }
     },
   },

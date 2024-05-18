@@ -1,6 +1,7 @@
-import ReactQuill from "react-quill";
+import ReactQuill from 'react-quill';
+import DOMPurify from 'dompurify';
 
-export default function Editor({value,onChange}) {
+export default function Editor({ value, onChange }) {
   const modules = {
     toolbar: [
       [{ header: [1, 2, false] }],
@@ -15,13 +16,21 @@ export default function Editor({value,onChange}) {
       ['clean'],
     ],
   };
+
+  // Sanitize the input before rendering
+  const handleChange = (content) => {
+    const cleanContent = DOMPurify.sanitize(content);
+    onChange(cleanContent);
+  };
+
   return (
     <div className="content">
-    <ReactQuill
-      value={value}
-      theme={'snow'}
-      onChange={onChange}
-      modules={modules} />
+      <ReactQuill
+        value={value}
+        theme={'snow'}
+        onChange={handleChange}
+        modules={modules}
+      />
     </div>
   );
 }

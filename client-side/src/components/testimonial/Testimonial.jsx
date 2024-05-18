@@ -7,7 +7,7 @@ import patientAvatar from "../../assets/images/patient-avatar.png";
 import { HiStar } from "react-icons/hi";
 const Testimonial = () => {
   return (
-    <div className="mt-[30px] lg:mt-[55px]">
+    <div className="mt-[30px] lg:mt-[55px] bg-primaryWhite">
       <Swiper
         modules={[Pagination]}
         spaceBetween={30}

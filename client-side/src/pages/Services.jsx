@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { departments } from "../assets/data/services";
 import ServiceCard from "../components/services/ServiceCard";
 import HomeSlider from "../components/HomeSlider";
 const Services = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
   return (
     <section>
       {/* <HomeSlider/> */}

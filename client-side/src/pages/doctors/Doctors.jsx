@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { doctors } from "../../assets/data/doctors";
 import DoctorCard from "../../components/doctors/DoctorCard";
 import Testimonial from "../../components/testimonial/Testimonial";
@@ -26,6 +26,10 @@ const Doctors = () => {
     KNOWN_LANGUAGES: "",
     PHOTO_PATH: "",
   });
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -156,14 +160,14 @@ const Doctors = () => {
     setDoctorForm(!doctorForm);
   };
   return (
-    <>
+    <section>
       {doctorForm && admin && (
-        <section className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
+        <section className="flex justify-center items-center min-h-screen">
           
           <form
             onSubmit={handleSubmit}
-            className="w-full max-w-2xl bg-white rounded-lg shadow-md p-6"
-          >
+            className="w-full max-w-2xl rounded-lg p-6 border border-border"
+          > 
             {admin && (
                 <div className="items-center flex justify-start mb-4">
                   {doctorForm && (
@@ -337,7 +341,7 @@ const Doctors = () => {
                   {index > 0 && (
                     <button
                       type="button"
-                      className="ml-2 px-3 py-1 bg-red-500 text-white rounded focus:outline-none focus:shadow-outline"
+                      className="ml-2 px-3 py-1 bg-red-500 text-primaryWhite rounded focus:outline-none focus:shadow-outline"
                       onClick={() => handleRemoveQualification(index)}
                     >
                       Remove
@@ -347,7 +351,7 @@ const Doctors = () => {
               ))}
               <button
                 type="button"
-                className="bg-primary admin-btn text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-primary admin-btn text-primaryWhite py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 onClick={handleAddQualification}
               >
                 Add Qualification
@@ -371,7 +375,7 @@ const Doctors = () => {
                   {index > 0 && (
                     <button
                       type="button"
-                      className="ml-2 px-3 py-1 admin-btn bg-red-500 text-white rounded focus:outline-none focus:shadow-outline"
+                      className="ml-2 px-3 py-1 admin-btn bg-red-500 text-primaryWhite rounded focus:outline-none focus:shadow-outline"
                       onClick={() => handleRemoveAchievement(index)}
                     >
                       Remove
@@ -381,7 +385,7 @@ const Doctors = () => {
               ))}
               <button
                 type="button"
-                className="bg-primary admin-btn text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-primary admin-btn text-primaryWhite py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 onClick={handleAddAchievement}
               >
                 Add Achievement
@@ -393,7 +397,7 @@ const Doctors = () => {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="bg-primary admin-btn text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-primary admin-btn text-primaryWhite font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
                 Submit
               </button>
@@ -403,7 +407,6 @@ const Doctors = () => {
       )}
       {!doctorForm && (
         <div>
-          <section>
             <div className="container text-center">
               
               <h2 className="heading">Find a Doctor</h2>
@@ -426,7 +429,6 @@ const Doctors = () => {
                 </div>
               )}
             </div>
-          </section>
 
           <section>
             <div className="container">
@@ -452,7 +454,7 @@ const Doctors = () => {
           </section>
         </div>
       )}
-    </>
+    </section>
   );
 };
 

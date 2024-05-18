@@ -2,8 +2,9 @@ import React from "react";
 import startIcon from "../../assets/images/Star.png";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
-import Slider from 'react-slick'
-
+import Slider from "react-slick";
+import { motion } from "framer-motion";
+import { fadeIn } from "../../utils/Variants";
 const DoctorCard = ({ doctor }) => {
   const {
     name,
@@ -16,14 +17,19 @@ const DoctorCard = ({ doctor }) => {
   } = doctor;
   return (
     <div className="p-3 lg:p-5">
-      <div>
+      <motion.div
+        variants={fadeIn("up", 0.1)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: false, amount: 0.1 }}
+      >
         <img src={photo} className="w-full" alt="" />
-      </div>
+      </motion.div>
       <h2 className="text-[18px] leading-[30px] lg:text-[26px] lg:leading-9 text-textColor font-[700] mt-3 lg:mt-5">
         {name}
       </h2>
       <div className="mt-2 lg:mt-4 flex items-center justify-between">
-        <span className="text-primary bg-softWhite py-1 px-2 lg:py-2 lg:px-6 text-[12px] leading-4 lg:text-[16px] lg:leading-7 font-semibold rounded">
+        <span className="text-primary bg-secondaryWhite py-1 px-2 lg:py-2 lg:px-6 text-[12px] leading-4 lg:text-[16px] lg:leading-7 font-semibold rounded">
           {specialization}
         </span>
 
@@ -54,7 +60,6 @@ const DoctorCard = ({ doctor }) => {
         </Link>
       </div>
     </div>
-  
   );
 };
 

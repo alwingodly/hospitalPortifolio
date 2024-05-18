@@ -13,7 +13,7 @@ const ImageCropper = ({ image, onCropDone, onCropCancel }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-5 bg-white rounded-lg shadow-xl">
+    <div className="max-w-4xl mx-auto p-5 bg-primaryWhite rounded-lg shadow-xl">
       <div className="relative w-full h-80">
         <Cropper
           image={image}

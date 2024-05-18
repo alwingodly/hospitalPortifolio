@@ -309,8 +309,16 @@
 }
 
 
-@media screen and (max-width: 1024px) {
-
+@media screen and (max-width: 1280px) {
+    .thumbnail {
+        position: absolute;
+        bottom: 40px;
+        left: 45%;
+        width: max-content;
+        z-index: 40;
+        display: flex;
+        gap: 20px;
+    }
     .carousel {
         margin-top: -40px;
     }
@@ -322,7 +330,7 @@
     }
     .carousel .list .item .content {
         position: absolute;
-        top: 20%;
+        top: 25%;
         width: 1140px;
         max-width: 80%;
         left: 51%;
@@ -331,6 +339,7 @@
         box-sizing: border-box;
         color: #fff;
         text-shadow: 0 5px 10px #0004;
+        margin-bottom: 20px;
     }
 }
 

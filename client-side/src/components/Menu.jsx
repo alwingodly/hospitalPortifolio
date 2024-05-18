@@ -7,7 +7,7 @@ import {departments} from '../assets/data/services.js'
 
 const Menu = () => {
   return (
-    <div className="bg-white hidden md:block rounded-lg overflow-hidden">
+    <div className="bg-primaryWhite hidden md:block rounded-lg overflow-hidden">
       <h2 className='text-xl font-semibold flex justify-center my-2'>Our Deparments</h2>
       <div className="menu-content grid grid-cols-4 p-4">
         {departments.map((dept, index) => (
