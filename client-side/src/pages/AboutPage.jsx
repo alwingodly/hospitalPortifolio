@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import img1 from "../assets/images/img1.jpg";
+import img1 from "../assets/images/img4.jpg";
 import LeadersCard from "../components/about/LeadersCard";
 import { leaders } from "../assets/data/leaders";
 import { about } from "../assets/data/about-mvv";
@@ -10,8 +10,8 @@ const AboutPage = () => {
   }, []);
   return (
     <>
-      <section>
-        <div className="carousel">
+      <>
+      <div className="blog-carousel">
           <div className="list">
             <div className="item">
               <img src={img1} alt="Slider 1" />
@@ -31,8 +31,8 @@ const AboutPage = () => {
             </div>
           </div>
         </div>
-      </section>
-      <section>
+      </>
+      <div className="mt-8">
         <div className="container">
           <h4 className="heading">Background</h4>
           <div>
@@ -119,7 +119,7 @@ const AboutPage = () => {
             </p>
           </div>
         </div>
-      </section>
+      </div>
       <section>
         <div className="container">
           <div className="flex items-center justify-center mb-8">
