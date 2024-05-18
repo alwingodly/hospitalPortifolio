@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import img1 from "../assets/images/img1.jpg";
+import img1 from "../assets/images/img4.jpg";
 import LeadersCard from "../components/about/LeadersCard";
 import { leaders } from "../assets/data/leaders";
 import { about } from "../assets/data/about-mvv";

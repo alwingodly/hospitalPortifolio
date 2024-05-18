@@ -83,7 +83,7 @@ const Blog = () => {
 
   const admin = useSelector((state) => state.auth.admin);
   return (
-    <section className="mt-4 mx-4 md:mx-6 lg:mx-32">
+    <section className="mx-4 md:mx-6 lg:mx-32">
       {admin && (
         <div className="flex justify-center">
           {!form && (

@@ -13,7 +13,8 @@ import image7 from "./images/b11.jpg";
 import image9 from "./images/b12.jpg";
 import image2 from "./images/b13.jpg";
 import image14 from "./images/b14.jpg";
-
+import { motion } from "framer-motion";
+import { fadeIn } from "../../utils/Variants";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 const images = [
@@ -57,13 +58,19 @@ const Gallery = () => {
         <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 3, 900: 4 }}>
           <Masonry gutter="20px">
             {images.map((image, index) => (
-              <img
+              <motion.div
+              variants={fadeIn("top", 0, 3)}
+              initial="hidden"
+              whileInView={"show"}
+              viewport={{ once: false, amount: 0.1 }}>
+                <img
                 key={index}
                 src={image}
                 alt={`Gallery ${index}`}
                 className="cursor-pointer w-full block transition-transform duration-300 hover:scale-90"
                 onClick={() => openImage(index)}
               />
+              </motion.div>
             ))}
           </Masonry>
         </ResponsiveMasonry>
